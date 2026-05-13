@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand colors */
+  --color-brand-orange: #f97316;
+  --color-brand-black: #0d0d0d;
+
+  /* Typography */
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #0d0d0d;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
