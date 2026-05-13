@@ -1,40 +1,48 @@
 # Estado de tareas — Inxenta Landing
 
+> **Última actualización:** 2026-05-13
+> **CI:** build exitoso (`npm run build` — 0 errores TypeScript, 0 errores de compilación)
+> **Deploy:** https://inxenta-landing.vercel.app
+
+---
+
 ## Completado
 
+### Setup inicial
 - [x] Crear proyecto Next.js 16 + Tailwind v4 + TypeScript
-- [x] Configurar `globals.css` con tokens de marca (`@theme`)
-- [x] Configurar `layout.tsx` (fuentes Playfair Display + Geist, metadata, lang="es")
+- [x] Configurar `layout.tsx` (fuentes Playfair Display + Geist, metadata OG, `lang="es"`)
 - [x] Copiar isotipo (`logo_inxenta.png`) a `public/`
-- [x] Construir `Nav.tsx` — logo isotipo + wordmark serif + botón "Sumarme"
-- [x] Construir `Hero.tsx` — headline serif, form waitlist, CTA, microcopy (Client Component)
-- [x] Construir `Problem.tsx` — 3 pain points con borde naranja superior
-- [x] Construir `ForWho.tsx` — 3 segmentos con accent bar naranja
-- [x] Construir `Footer.tsx` — fondo oscuro, wordmark CSS con dot naranja, email, copyright
-- [x] Crear `app/api/waitlist/route.ts` — Route Handler POST con stub Supabase comentado
-- [x] Crear `.env.local.example` con variables de Supabase
-- [x] Push inicial a GitHub (`martin-tsanchez/inxenta-landing`)
-- [x] Deploy en Vercel (auto-conectado al repo, build exitoso)
-- [x] Fix logo Nav: isotipo cuadrado + wordmark CSS (commit `7cc4cf4`)
+- [x] Push a GitHub (`martin-tsanchez/inxenta-landing`) + deploy en Vercel
+
+### Diseño y componentes (redesign completo — commit `3225667`)
+- [x] `globals.css` — sistema de tokens completo: cream `#F7F3EC`, coral `#FF6B4A`, forest green `#0F3D33`, clases `bg-cream`, `bg-cream-muted`, `bg-brand-green`, `hover:bg-brand-orange-hover`
+- [x] `Nav.tsx` — isotipo + wordmark serif + tagline "Compliance que *genera* valor" + 3 links de navegación + CTA dark
+- [x] `Hero.tsx` — layout 2 columnas (copy + DashboardMock), headline con *ahora.* en cursiva naranja, form waitlist (email)
+- [x] `DashboardMock.tsx` — mockup del dashboard LEC con sidebar, métricas, donut LEC, vencimientos, tareas
+- [x] `Problem.tsx` — 3 pain points, bg actualizado a cream-muted
+- [x] `Features.tsx` — 4 características LEC con icon tiles naranjas
+- [x] `ForWho.tsx` — sección oscura forest green, 3 segmentos con check circles, decoración SVG target
+- [x] `Waitlist.tsx` — form completo 4 campos (nombre, email, cargo, empresa) con pitch y 3 beneficios
+- [x] `Footer.tsx` — columnas Producto/Compañía/Legal + CTA card + wordmark recreado en CSS
+- [x] `app/page.tsx` — composición: Nav → Hero → Problem → Features → ForWho → Waitlist → Footer
+- [x] `app/api/waitlist/route.ts` — acepta `{ email, name, role, company }`
+
+---
 
 ## Pendiente
 
-- [ ] **Conectar Supabase waitlist**
+- [ ] **Conectar Supabase waitlist** ← próxima sesión
   - Crear proyecto en supabase.com
-  - Crear tabla: `waitlist (id uuid default gen_random_uuid(), email text unique not null, created_at timestamptz default now())`
-  - Agregar credenciales a `.env.local` (y en Vercel → Settings → Environment Variables)
-  - Descomentar código en `app/api/waitlist/route.ts`
-  - Testear flujo completo: submit email → fila en Supabase
+  - Crear tabla `waitlist` con columnas: `id`, `email`, `name`, `role`, `company`, `created_at`
+  - Completar `.env.local` + Vercel env vars
+  - `npm install @supabase/supabase-js`
+  - Descomentar bloque Supabase en `app/api/waitlist/route.ts`
+  - Testear flujo completo
 
 - [ ] **Conectar dominio `inxenta.com`**
-  - Vercel dashboard → proyecto `inxenta-landing` → Settings → Domains
-  - Agregar `inxenta.com` y `www.inxenta.com`
-  - Configurar DNS en el registrar:
-    - Registro `A`: `@` → `76.76.21.21`
-    - Registro `CNAME`: `www` → `cname.vercel-dns.com`
+  - Vercel → Settings → Domains → `inxenta.com` + `www.inxenta.com`
+  - DNS: registro `A` `@` → `76.76.21.21` / `CNAME` `www` → `cname.vercel-dns.com`
 
-- [ ] **Mejoras visuales opcionales (post-lanzamiento)**
-  - Obtener PNG del logo horizontal oficial (isotipo + wordmark en un solo archivo)
-  - Reemplazar la versión CSS por el archivo real en Nav
-  - Agregar OG image (para preview en redes sociales)
-  - Agregar favicon personalizado (actualmente usa el default de Next.js)
+- [ ] **Assets visuales**
+  - OG image `public/og-image.png` (1200×630px) + configurar en `layout.tsx`
+  - Favicon personalizado (isotipo de Inxenta)
