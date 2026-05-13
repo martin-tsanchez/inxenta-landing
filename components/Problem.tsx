@@ -18,7 +18,7 @@ const painPoints = [
 
 export default function Problem() {
   return (
-    <section className="bg-gray-50 py-24 px-6">
+    <section className="bg-cream-muted py-24 px-6">
       <div className="max-w-5xl mx-auto">
         <p className="text-center text-gray-400 text-xs font-semibold uppercase tracking-[0.2em] mb-14">
           El problema
