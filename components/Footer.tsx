@@ -1,15 +1,28 @@
 const footerLinks = [
   {
-    title: "Producto",
-    links: ["Facturación", "Exportaciones", "Capacitación", "I+D", "Acreditación", "DDJJ"],
+    title: "Plataforma",
+    links: [
+      { label: "Cómo funciona", href: "#workflow" },
+      { label: "Para quién", href: "#for-who" },
+      { label: "Seguridad", href: "#" },
+      { label: "FAQ", href: "#faq" },
+    ],
   },
   {
     title: "Compañía",
-    links: ["Sobre nosotros", "Blog", "Contacto"],
+    links: [
+      { label: "Agendar demo", href: "#demo-cta" },
+      { label: "Sobre nosotros", href: "#" },
+      { label: "Blog", href: "#" },
+      { label: "Contacto", href: "mailto:msanchez@inxenta.com" },
+    ],
   },
   {
     title: "Legal",
-    links: ["Términos y condiciones", "Política de privacidad"],
+    links: [
+      { label: "Términos y condiciones", href: "#" },
+      { label: "Política de privacidad", href: "#" },
+    ],
   },
 ];
 
@@ -90,13 +103,13 @@ export default function Footer() {
               </div>
               <ul className="flex flex-col gap-3 list-none p-0 m-0">
                 {col.links.map((link) => (
-                  <li key={link}>
+                  <li key={link.label}>
                     <a
-                      href="#"
+                      href={link.href}
                       className="text-[13px] transition-colors hover:text-white"
                       style={{ color: "#9ca3af" }}
                     >
-                      {link}
+                      {link.label}
                     </a>
                   </li>
                 ))}

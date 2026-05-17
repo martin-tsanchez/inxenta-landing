@@ -1,3 +1,8 @@
+"use client";
+
+import { motion } from "motion/react";
+import { fadeUp, staggerContainer, viewport } from "@/components/motion/variants";
+
 const segments = [
   {
     label: "Oficiales de Compliance",
@@ -54,26 +59,41 @@ export default function ForWho() {
       </div>
 
       <div className="max-w-5xl mx-auto relative text-center">
-        <p
-          className="text-xs font-semibold uppercase tracking-[0.2em] mb-5"
-          style={{ color: "#ff6b4a" }}
+        {/* Eyebrow + title */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
         >
-          Para quién es Inxenta
-        </p>
+          <p
+            className="text-xs font-semibold uppercase tracking-[0.2em] mb-5"
+            style={{ color: "#ff6b4a" }}
+          >
+            Para quién
+          </p>
 
-        <h2
-          className="font-serif leading-snug tracking-tight max-w-2xl mx-auto mb-16"
-          style={{
-            fontSize: "clamp(1.75rem, 2.5vw + 1rem, 2.75rem)",
-            color: "#ffffff",
-          }}
+          <h2
+            className="font-serif leading-snug tracking-tight max-w-2xl mx-auto mb-16"
+            style={{
+              fontSize: "clamp(1.75rem, 2.5vw + 1rem, 2.75rem)",
+              color: "#ffffff",
+            }}
+          >
+            Diseñado para equipos que toman el compliance en serio.
+          </h2>
+        </motion.div>
+
+        {/* Segment grid */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-12 text-left max-w-4xl mx-auto"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
         >
-          Diseñado para equipos que toman el compliance en serio.
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-left max-w-4xl mx-auto">
           {segments.map(({ label, description }) => (
-            <div key={label}>
+            <motion.div key={label} variants={fadeUp}>
               <div className="flex items-center gap-3 mb-3">
                 <span
                   className="shrink-0 inline-flex items-center justify-center"
@@ -111,8 +131,18 @@ export default function ForWho() {
               >
                 {description}
               </p>
-            </div>
+            </motion.div>
           ))}
+        </motion.div>
+
+        {/* CTA link */}
+        <div className="mt-14 flex justify-center">
+          <a
+            href="#"
+            className="inline-flex items-center gap-2 border border-white/20 text-white/80 hover:text-white hover:border-white/40 transition-colors rounded-lg px-6 py-2.5 text-sm font-medium"
+          >
+            Ver todas las soluciones →
+          </a>
         </div>
       </div>
     </section>

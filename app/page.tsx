@@ -1,9 +1,12 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Problem from "@/components/Problem";
-import Features from "@/components/Features";
+import Workflow from "@/components/Workflow";
+import ROI from "@/components/ROI";
+import VideoDemo from "@/components/VideoDemo";
 import ForWho from "@/components/ForWho";
-import Waitlist from "@/components/Waitlist";
+import DemoCTA from "@/components/DemoCTA";
+import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -12,9 +15,12 @@ export default function Home() {
       <Nav />
       <Hero />
       <Problem />
-      <Features />
+      <Workflow />
+      <ROI />
+      <VideoDemo />
       <ForWho />
-      <Waitlist />
+      <DemoCTA />
+      <FAQ />
       <Footer />
     </main>
   );
